@@ -1,18 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Startsida Stefan Eklund</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+
+
+          // Change font color to blue
+          document.querySelector('#red').onclick = function() {
+            document.querySelector('#yolt').setAttribute("class", "nav-link active");
+          };
+
+          // Change font color to green
+          document.querySelector('.nav-link').onclick = function() {
+              document.querySelector('.nav-link').style.color = 'green';
+          };
+      });
+  </script>
+
 </head>
 <body>
+  <div class="container">
+
+    <ul class="nav nav-tabs">
+      <li class="nav-item" id="yolo">
+        <a class="nav-link" id="yolt" href="#">Active</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Stefan</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="about.html">Om</a>
+          <a class="dropdown-item" href="cv.html">CV</a>
+          <a class="dropdown-item" href="interests.html">Intressen</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="hello.html">Hello</a>
+          <a class="dropdown-item" href="boot.html">Boot</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about.html">Om</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="cv.html">CV</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="interests.html">Intressen</a>
+      </li>
+    </ul>
+
+    <h1 id="hello">Hello!</h1>
+    <button id="red">Do it!</button>
+
     <p> Hej och välkommen till stefan eklunds hemsida.</p>
 
     Läs mer om mig under följande länkar: </br></br>
-      <a href="about.html">Om mig</a></br>
-      <a href="cv.html">CV</a></br>
-      <a href="hello.html">Hello</a></br>
-      <a href="interests.html">Intressen</a></br>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Om mig
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="about.html">Om</a>
+        <a class="dropdown-item" href="cv.html">CV</a>
+        <a class="dropdown-item" href="interests.html">Intressen</a>
+        <a class="dropdown-item" href="hello.html">Hello</a>
+        <a class="dropdown-item" href="boot.html">Boot</a>
+      </div>
+    </div>
+
+
 
       <a href="index.html">Tillbaks till startsidan</a></br>
-  </body>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </body>
