@@ -1,6 +1,9 @@
 # homepage
 The Stefan Eklund homepage
 
+- En liten engelsk flagga för att byta språk.
+- Running calculator: några funktioner för att konvertera medelfart, distans och tid. Running.js, 
+
 Your website must contain at least four different .html pages, and it should be possible to get from any page on your website to any other page by following one or more hyperlinks.
 
 Your website must include at least one list (ordered or unordered), at least one table, and at least one image.
