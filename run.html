@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Stefan Eklund springer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+
+        console.log("DOM Loaded");
+
+        var time, dist, pace;
+
+        function checkDistance() {
+
+          console.log("checkDistance function");
+          dist = document.querySelector('#inputdistance').value;
+
+          if(isNaN(dist)){
+            console.log(dist + " is not a number");
+            temp = "NAN";
+          } else {
+            console.log(dist + " is a number");
+            temp = dist;
+            return temp;
+          }
+        }
+
+        function checkTime(time) {
+          // vi kollar att input är korrekt samt översätter tiden till rena minuter.
+
+          console.log("checkTime function");
+          var timeMinutes;
+          hour = document.querySelector('#inputtimeh').value
+          minutes = document.querySelector('#inputtimem').value
+          seconds = document.querySelector('#inputtimes').value
+
+          if(hour > 0) {
+            timeMinutes = hour *60;
+          }
+
+          if(minutes >59) {
+              alert("För många minuter")
+          } else {
+            timeMinutes = parseInt(timeMinutes) + parseInt(minutes);
+          }
+
+          if(seconds >59) {
+              alert("För många sekunder")
+          }
+
+          console.log("Timmar: " + hour);
+          console.log("Mnuter: " + minutes);
+          console.log("sekunder: " + seconds);
+          console.log("timeMinutes: " + timeMinutes);
+
+          return timeMinutes;
+
+        }
+
+        function checkPace() {
+          console.log("checkPace function");
+          pacem = document.querySelector('#inputpacem').value
+          paces = document.querySelector('#inputpaces').value
+
+          if(pacem && paces) {
+            console.log(pacem +":"+ paces + " är mycket snabbt!");
+          temp = pacem + "." + parseInt(paces / 60 * 100);
+          } else {
+            temp = "";
+          }
+
+          return temp;
+        }
+
+        function calculateDistance() {
+          console.log("calculateDistance function");
+        }
+
+        function calculateTime() {
+          console.log("calculateTime function");
+
+        }
+
+        function calculatePace() {
+          console.log("calculatePace function");
+
+        }
+
+        // Clears the form input fields
+        document.querySelector('#clearform').onclick = function() {
+          document.querySelector('#inputdistance').value = '';
+          document.querySelector('#inputtimeh').value = '';
+          document.querySelector('#inputtimem').value = '';
+          document.querySelector('#inputtimes').value = '';
+          document.querySelector('#inputpacem').value = '';
+          document.querySelector('#inputpaces').value = '';
+        };
+
+        // Action on the calculate time button
+        document.querySelector('#calcultetime').onclick = function() {
+          console.log("Calculate time function");
+          dist = checkDistance();
+        console.log("Efter checkdistance " + dist);
+          if(dist) {
+            pace = checkPace();
+
+            if(dist && pace) {
+              console.log("Distans och pace har värde " + dist + ", " + pace);
+            }
+          }
+          else {
+            console.log("Error in distance, user needs to be informed.")
+          }
+        };
+
+        // Action on the calculate pace button
+        document.querySelector('#calcultepace').onclick = function() {
+          console.log("Calculate pace function");
+          //dist = checkDistance();
+          //time = checkTime();
+/*
+          if(dist && time) {
+            console.log("Distans och tid har värde " + dist + ", " + time);
+            pace = time / dist;
+            document.querySelector('#inputpacem').value = pace;
+          }  */
+        };
+
+
+      // Change focus from distance input
+      document.querySelector('#inputdistance').onchange  = function() {
+          console.log("Distance onchange");
+          dist = checkDistance();
+          if(dist) {
+              pace = checkPace();
+              console.log("Pace: " + pace);
+              if(pace) {
+                // Om Pace har ett värde räkna ut tiden.
+                calculateTime();
+              } else {
+                // Om pace är tomt räkna ut det med dist och time
+                time = checkTime();
+                console.log("Time: " + time);
+                calculatePace();
+              }
+          }
+      };
+
+      // Change focus from time hour input
+      document.querySelector('#inputtimeh').onchange  = function() {
+        console.log("Time h onchange");
+        checkTime();
+      };
+
+      // Change focus from time minutes input
+      document.querySelector('#inputtimem').onchange  = function() {
+        console.log("Time m onchange");
+        checkTime();
+      };
+
+      // Change focus from time seconds input
+      document.querySelector('#inputtimes').onchange  = function() {
+        console.log("Time s onchange");
+        checkTime();
+      };
+
+      // Change focus from pace minutes input
+      document.querySelector('#inputpacem').onchange  = function() {
+        console.log("Pace m onchange");
+        checkPace();
+      };
+
+      // Change focus from pace seconds input
+      document.querySelector('#inputpaces').onchange  = function() {
+        console.log("Pace s onchange");
+        checkPace();
+      };
+
+      // Change in the standard distance dropdown list. Will update distance input field
+      document.querySelector('#standarddist').onchange  = function() {
+        console.log("dropdown " + this.value);
+        document.querySelector('#inputdistance').value = this.value;
+      };
+
+
+    });
+
+  </script>
+
+</head>
+<body>
+  <div class="container">
+    <h2>Running calcylator</h2>
+    <p>Här kan du få lite hjälp med att räkna ut vilken fart (pace) du ska ha för att nå en önskad tid på en distans eller tvärtom. Fyll i två värden så räknas det tredje ut åt dig</p>
+  </div>
+
+  <div class="container">
+
+</br>
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label>Distans (km)</label>
+      <input id="inputdistance" type="text" class="form-control" placeholder="Distans">
+    </div>
+    <div class="form-group col-md-1">
+      <label>Tid (h)</label>
+      <input id="inputtimeh" type="text" class="form-control" placeholder="h">
+    </div>
+    <div class="form-group col-md-1">
+      <label>(m)</label>
+      <input id="inputtimem" type="text" class="form-control" placeholder="mm">
+    </div>
+    <div class="form-group col-md-1">
+      <label>(s)</label>
+      <input id="inputtimes" type="text" class="form-control" placeholder="ss">
+    </div>
+    <div class="form-group col-md-1">
+      <label>Snitt (m)</label>
+      <input id="inputpacem" type="text" class="form-control" placeholder="mm">
+    </div>
+    <div class="form-group col-md-1">
+      <label>(s)</label>
+      <input id="inputpaces" type="text" class="form-control" placeholder="ss">
+    </div>
+
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label>Standard distanser</label>
+      <select class="form-control" id="standarddist">
+        <option value=""></option>
+        <option value="10">1 mil</option>
+        <option value="21.122">Halv marathon</option>
+        <option value="42.244">Marathon</option>
+      </select>
+    </div>
+    <div class="form-group col-md-3">
+      <button id="calcultetime" type="submit" class="btn btn-primary">Räkna ut tid</button>
+    </div>
+    <div class="form-group col-md-3">
+      <button id="calcultepace" type="submit" class="btn btn-primary">Räkna ut pace</button>
+    </div>
+    <div class="form-group col-md-3">
+      <button id="clearform" type="submit" class="btn btn-primary">Rensa</button>
+    </div>
+  </div>
+</div>
+</form>
+
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>
