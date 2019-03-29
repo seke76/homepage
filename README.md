@@ -1,6 +1,7 @@
 # homepage
 The Stefan Eklund homepage
 
+- Få title baren att scrolla eller iaf byta text. Det är alltså texten på fliken högst upp i chrome.
 - En liten engelsk flagga för att byta språk.
 - Mode selector, dark or light mode. Change background color, fonts perhaps.
 - Cookie, to store users mode selector choice.
